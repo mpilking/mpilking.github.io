@@ -3,7 +3,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>I did most of the steps below and then ran into the following error when running the build script at the end:</p>
-<p><code>VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005), component MachineWrap, interface IMachine</code>.  </p>
+<p><code>VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005), component MachineWrap, interface IMachine</code>  </p>
 <p>The problem turned out to be that I was performing the install via SSH.  After troubleshooting for a while, I found an error in the <code>DetectionLab\Vagrant\vagrant_up_logger.log</code> file that showed the <code>vboxmanage</code> command starting with <code>--type gui</code>.  Realizing that was not going to work via my SSH connection to my lab machine, I switched to the desktop to re-run the build script.  It then worked like a champ.  As each virtual machine was started during the install, the console screen for the VM would pop up and then complete the configuration changes to the VM.  I didn't realize that a headless install was not supported.  So make sure you are doing this at the GUI desktop console (at least when running the <code>build.sh</code> script).</p>
 </div>
 <h2 id="install-configure-virtualbox">Install &amp; Configure VirtualBox<a class="headerlink" href="#install-configure-virtualbox" title="Permanent link">&para;</a></h2>
